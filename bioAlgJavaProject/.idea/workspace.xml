@@ -35,14 +35,26 @@
       <file leaf-file-name="PerfectlyMatchingAdapterFragments.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PerfectlyMatchingAdapterFragments.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+            <state relative-caret-position="257">
+              <caret line="96" column="22" lean-forward="false" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3357#3365#0" expanded="true" />
-                <element signature="e#3418#3427#0" expanded="true" />
-                <element signature="e#4662#4663#0" expanded="true" />
-                <element signature="e#4706#4707#0" expanded="true" />
+                <element signature="e#3622#3630#0" expanded="true" />
+                <element signature="e#3683#3692#0" expanded="true" />
+                <element signature="e#4967#4968#0" expanded="true" />
+                <element signature="e#5011#5012#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImperfectlyMatchingAdapterFragments.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ImperfectlyMatchingAdapterFragments.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="40" column="51" lean-forward="true" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,6 +125,7 @@
         <option value="$PROJECT_DIR$/src/BarChartComponent.java" />
         <option value="$PROJECT_DIR$/src/BarChart_AWT.java" />
         <option value="$PROJECT_DIR$/src/BarChart.java" />
+        <option value="$PROJECT_DIR$/src/ImperfectlyMatchingAdapterFragments.java" />
         <option value="$PROJECT_DIR$/src/PerfectlyMatchingAdapterFragments.java" />
       </list>
     </option>
@@ -168,6 +181,11 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -422,16 +440,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PerfectlyMatchingAdapterFragments.java">
+    <entry file="file://$PROJECT_DIR$/src/ImperfectlyMatchingAdapterFragments.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        <state relative-caret-position="311">
+          <caret line="40" column="51" lean-forward="true" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3357#3365#0" expanded="true" />
-            <element signature="e#3418#3427#0" expanded="true" />
-            <element signature="e#4662#4663#0" expanded="true" />
-            <element signature="e#4706#4707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PerfectlyMatchingAdapterFragments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="96" column="22" lean-forward="false" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3622#3630#0" expanded="true" />
+            <element signature="e#3683#3692#0" expanded="true" />
+            <element signature="e#4967#4968#0" expanded="true" />
+            <element signature="e#5011#5012#0" expanded="true" />
           </folding>
         </state>
       </provider>
