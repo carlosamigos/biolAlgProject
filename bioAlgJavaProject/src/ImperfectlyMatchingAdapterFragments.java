@@ -32,48 +32,58 @@ public class ImperfectlyMatchingAdapterFragments {
             }
             counter++;
         }
-        System.out.println(numberOfPrefixMatches);
+        System.out.println(dnaLengthWithAdapterRemovedToNumberOfLengthOccurence);
     }
 
     public void findPrefix(String dna){
         for (int dnaIndex = 0; dnaIndex < dna.length(); dnaIndex++) {
-            String prefix = "";
-            char dnaCharachter = dna.charAt(dnaIndex);
-            if (dnaCharachter == adapterSequence.charAt(0)){
-                prefix = doPrefixSearch(dna, dnaIndex);
-                int suffixLength = dna.length() - dnaIndex;
-                if (prefix.length() == suffixLength && !prefix.equals("")){
-                    addPrefixToMap(prefix, dna);
-                    break;
-                }
-            }
-        }
-    }
-
-    private String doPrefixSearch(String dna, int dnaIndex){
-        String prefix = "" + adapterSequence.charAt(0);
-        int adapterSequenceIndex = 1;
-        while (!prefix.equals("")) {
-            String suffix = dna.substring(dnaIndex + adapterSequenceIndex);
-            if (suffix.equals("")){
+            String suffix = dna.substring(dnaIndex);
+            String prefix = adapterSequence.substring(0, suffix.length());
+            if (doPrefixSearchBasedOnEditDistance(suffix, prefix)){
+                addPrefixToMap(prefix, dna);
                 break;
             }
-            prefix = addToPrefix(suffix, prefix, adapterSequenceIndex);
-            adapterSequenceIndex++;
         }
-        return prefix;
     }
 
-    private String addToPrefix(String suffix, String prefix, int adapterSequenceIndex){
-        char suffixChar = suffix.charAt(0);
-        if (suffixChar == adapterSequence.charAt(adapterSequenceIndex)){
-            prefix += suffixChar;
-            return prefix;
+    public boolean doPrefixSearchBasedOnEditDistance(String suffix, String prefix){
+        int acceptableEditdistance = (int) (prefix.length()*acceptableError);
+        int editDistance = 0;
+        for (int i = 0; i < prefix.length(); i++) {
+            if (prefix.charAt(i) != suffix.charAt(i)){
+                editDistance++;
+            }
+            if (editDistance > acceptableEditdistance){
+                return false;
+            }
         }
-        else{
-            return "";
-        }
+        return true;
     }
+
+//    private String doPrefixSearch(String dna, int dnaIndex){
+//        String prefix = "" + adapterSequence.charAt(0);
+//        int adapterSequenceIndex = 1;
+//        while (!prefix.equals("")) {
+//            String suffix = dna.substring(dnaIndex + adapterSequenceIndex);
+//            if (suffix.equals("")){
+//                break;
+//            }
+//            prefix = addToPrefix(suffix, prefix, adapterSequenceIndex);
+//            adapterSequenceIndex++;
+//        }
+//        return prefix;
+//    }
+//
+//    private String addToPrefix(String suffix, String prefix, int adapterSequenceIndex){
+//        char suffixChar = suffix.charAt(0);
+//        if (suffixChar == adapterSequence.charAt(adapterSequenceIndex)){
+//            prefix += suffixChar;
+//            return prefix;
+//        }
+//        else{
+//            return "";
+//        }
+//    }
 
     private void addPrefixToMap(String prefix, String dna){
         int newDnaLenght = dna.length()-prefix.length();

@@ -31,7 +31,7 @@ public class PerfectlyMatchingAdapterFragments {
             }
             counter++;
         }
-        System.out.println(numberOfPrefixMatches);
+        System.out.println(dnaLengthWithAdapterRemovedToNumberOfLengthOccurence);
     }
 
     public void findPrefix(String dna){
