@@ -54,6 +54,9 @@ class Node {
      */
     private int resultCount = -1;
 
+
+    private int endCount = 0;
+
     /**
      * Creates a new Node
      */
@@ -227,4 +230,12 @@ class Node {
         data[lastIdx++] = index;
     }
 
+
+    public int getEndCount() {
+        return endCount;
+    }
+
+    public void setEndCount(int endCount) {
+        this.endCount = endCount;
+    }
 }
