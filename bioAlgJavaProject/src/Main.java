@@ -20,10 +20,13 @@ public class Main {
         String adapterSequence = "TGGAATTCTCGGGTGCCAAGGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG";
 
         DNAFile file = new DNAFile("s_3_sequence_1M.txt");
+        DNAFile file2 = new DNAFile("s_1-1_1M.txt");
         ArrayList<String> dnaStrings = file.getDnaStrings();
+        System.out.println(file2.getDnaStrings().size());
 
-        ImperfectlyMatchingAdapterFragments imaf = new ImperfectlyMatchingAdapterFragments(dnaStrings, adapterSequence, 0.10);
+        ImperfectlyMatchingAdapterFragments imaf = new ImperfectlyMatchingAdapterFragments(dnaStrings, adapterSequence, 0.25);
         imaf.run();
+        imaf.printDistribution();
     }
 
     public static void task3(String[] args){

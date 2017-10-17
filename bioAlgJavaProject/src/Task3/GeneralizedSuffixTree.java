@@ -75,6 +75,7 @@ public class GeneralizedSuffixTree {
         Node currentNode = root;
         Edge currentEdge;
 
+
         for (int i = 0; i < word.length(); ++i) {
             char ch = word.charAt(i);
             // follow the edge corresponding to this char

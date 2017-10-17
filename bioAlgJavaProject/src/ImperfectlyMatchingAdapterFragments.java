@@ -8,6 +8,7 @@ public class ImperfectlyMatchingAdapterFragments {
     private ArrayList<String> dnaStrings;
     private String adapterSequence;
     private double acceptableError;
+    private int numberOfAdapterSequencesFound;
     //maps prefix to number of occurence fron DNA file
     private Map<String, Integer> numberOfPrefixMatches;
     private Map<String, Integer> dnaLengthWithAdapterRemovedToNumberOfLengthOccurence;
@@ -18,6 +19,7 @@ public class ImperfectlyMatchingAdapterFragments {
         this.numberOfPrefixMatches = new HashMap<String, Integer>();
         this.dnaLengthWithAdapterRemovedToNumberOfLengthOccurence = new HashMap<String, Integer>();
         this.acceptableError = acceptableError;
+        this.numberOfAdapterSequencesFound = 0;
     }
 
     public void run(){
@@ -33,6 +35,7 @@ public class ImperfectlyMatchingAdapterFragments {
             counter++;
         }
         System.out.println(dnaLengthWithAdapterRemovedToNumberOfLengthOccurence);
+        System.out.println("Number of adapter seauences found: " + numberOfAdapterSequencesFound);
     }
 
     public void findPrefix(String dna){
@@ -41,6 +44,7 @@ public class ImperfectlyMatchingAdapterFragments {
             String prefix = adapterSequence.substring(0, suffix.length());
             if (doPrefixSearchBasedOnEditDistance(suffix, prefix)){
                 addPrefixToMap(prefix, dna);
+                numberOfAdapterSequencesFound++;
                 break;
             }
         }
@@ -96,6 +100,14 @@ public class ImperfectlyMatchingAdapterFragments {
             int currentNumberOfPrefix = numberOfPrefixMatches.get(prefix);
             numberOfPrefixMatches.put(prefix, currentNumberOfPrefix+1);
             dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.put(key, currentNumberOfPrefix+1);
+        }
+    }
+
+    public void printDistribution(){
+        for (int i = 0; i < dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.size(); i++) {
+            String key = ""+i;
+            String value = "" + dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.get(key);
+            System.out.println(key + "\t" + value);
         }
     }
 }
