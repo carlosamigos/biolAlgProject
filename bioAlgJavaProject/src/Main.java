@@ -1,8 +1,8 @@
+import Task3.FindAdapterSequence;
+
 import java.util.ArrayList;
 
 public class Main {
-
-
 
 
     public static void task1(String[] args){
@@ -26,8 +26,18 @@ public class Main {
         imaf.run();
     }
 
+    public static void task3(String[] args){
+        String adapterSequence;
+
+        DNAFile file = new DNAFile("s_1-1_1M.txt");
+        ArrayList<String> dnaStrings = file.getDnaStrings();
+
+        FindAdapterSequence fas = new FindAdapterSequence(dnaStrings);
+        fas.run();
+    }
+
     public static void main(String[] args){
-        task2(args);
+        task3(args);
     }
 
 }
