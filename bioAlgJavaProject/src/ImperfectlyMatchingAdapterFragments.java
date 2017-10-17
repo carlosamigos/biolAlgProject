@@ -110,4 +110,15 @@ public class ImperfectlyMatchingAdapterFragments {
             System.out.println(key + "\t" + value);
         }
     }
+
+    public ArrayList<String> getPrefixes(){
+        ArrayList<String> prefixes = new ArrayList<String>();
+
+        for (int i = 0; i < dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.size(); i++) {
+            String key = ""+i;
+            prefixes.add("" + dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.get(key));
+        }
+
+        return prefixes;
+    }
 }
