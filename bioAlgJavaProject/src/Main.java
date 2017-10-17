@@ -22,8 +22,9 @@ public class Main {
         DNAFile file = new DNAFile("s_3_sequence_1M.txt");
         ArrayList<String> dnaStrings = file.getDnaStrings();
 
-        ImperfectlyMatchingAdapterFragments imaf = new ImperfectlyMatchingAdapterFragments(dnaStrings, adapterSequence, 0.10);
+        ImperfectlyMatchingAdapterFragments imaf = new ImperfectlyMatchingAdapterFragments(dnaStrings, adapterSequence, 0.25);
         imaf.run();
+        imaf.printDistribution();
     }
 
     public static void main(String[] args){

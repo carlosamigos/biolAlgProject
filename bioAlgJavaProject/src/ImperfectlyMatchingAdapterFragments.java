@@ -98,4 +98,12 @@ public class ImperfectlyMatchingAdapterFragments {
             dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.put(key, currentNumberOfPrefix+1);
         }
     }
+
+    public void printDistribution(){
+        for (int i = 0; i < dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.size(); i++) {
+            String key = ""+i;
+            String value = "" + dnaLengthWithAdapterRemovedToNumberOfLengthOccurence.get(key);
+            System.out.println(key + "\t" + value);
+        }
+    }
 }
