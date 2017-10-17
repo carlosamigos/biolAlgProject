@@ -1,4 +1,5 @@
 package Task3;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -100,6 +101,35 @@ public class GeneralizedSuffixTree {
 
         return null;
     }
+
+
+    /**
+     * Returns a list with at least k children that
+     */
+    public ArrayList<Node> searchForNodes(Integer k) {
+        Node currentNode = root;
+        Edge currentEdge;
+
+        ArrayList<Integer> results = new ArrayList<Integer>();
+        method(root, results, k);
+
+        System.out.println(results.size());
+        System.out.println(results);
+
+        return null;
+    }
+
+    private void method(Node node, ArrayList<Integer> results, Integer k){
+        for (Edge edge : node.getEdges().values()) {
+            if (edge.getLabel().equals("")){
+                if(edge.getDest().getData().size() > k){
+                    results.addAll(edge.getDest().getData());
+                }
+            }
+            method(edge.getDest(), results, k);
+        }
+    }
+
 
     /**
      * Adds the specified <tt>index</tt> to the GST under the given <tt>key</tt>.
