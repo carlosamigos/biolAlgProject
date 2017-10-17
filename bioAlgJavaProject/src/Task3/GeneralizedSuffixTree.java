@@ -1,6 +1,8 @@
 package Task3;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class GeneralizedSuffixTree {
 
@@ -101,6 +103,41 @@ public class GeneralizedSuffixTree {
 
         return null;
     }
+
+
+    /**
+     * Returns a list with at least k children that
+     */
+    public ArrayList<Node> searchForNodes(Integer threshold) {
+        Node currentNode = root;
+        Edge currentEdge;
+
+        HashMap<Node, Integer> results = new HashMap<>();
+        searchForInternalNode(root, results, threshold);
+
+        System.out.println(results.size());
+        System.out.println(results);
+        return null;
+    }
+
+
+    private void searchForInternalNode(Node node, HashMap<Node, Integer> results, Integer threshold){
+        Integer leafsUnderCounter = 0;
+
+        for (Edge edge : node.getEdges().values()) {
+            System.out.println(edge.getLabel() + edge.getDest().getData() + node.getEndCount());
+            if (edge.getDest().getEdges().size() == 0 ) {
+                leafsUnderCounter++;
+            }
+            else {
+                searchForInternalNode(edge.getDest(), results, threshold);
+            }
+        }
+        if (leafsUnderCounter >= threshold) {
+            results.put(node, leafsUnderCounter);
+        }
+    }
+
 
     /**
      * Adds the specified <tt>index</tt> to the GST under the given <tt>key</tt>.
@@ -214,8 +251,10 @@ public class GeneralizedSuffixTree {
                     e.getDest().addRef(value);
                     return new Pair<Boolean, Node>(true, s);
                 } else if (remainder.startsWith(e.getLabel())) {
+
                     return new Pair<Boolean, Node>(true, s);
                 } else if (e.getLabel().startsWith(remainder)) {
+
                     // need to split as above
                     Node newNode = new Node();
                     newNode.addRef(value);
@@ -284,6 +323,7 @@ public class GeneralizedSuffixTree {
     private Pair<Node, String> update(final Node inputNode, final String stringPart, final String rest, final int value) {
         Node s = inputNode;
         String tempstr = stringPart;
+
         char newChar = stringPart.charAt(stringPart.length() - 1);
 
         // line 1
