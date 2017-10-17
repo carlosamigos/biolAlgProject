@@ -232,17 +232,14 @@ class Node {
         return distinctStringsEnding;
     }
 
-    public void addDistinctStringsEnding(Integer index,  HashSet<Integer> indexes) {
-        this.distinctStringsEnding.add(index);
-        this.distinctStringsEnding.addAll(indexes);
-    }
-
-    public void addDistinctStringsEnding(HashSet<Integer> indexes) {
-        this.distinctStringsEnding.addAll(indexes);
-    }
 
     public void addDistinctStringsEnding(Integer index) {
         this.distinctStringsEnding.add(index);
+        if (this.suffix != null){
+            this.suffix.addDistinctStringsEnding(index);
+
+        }
+
     }
 
 
