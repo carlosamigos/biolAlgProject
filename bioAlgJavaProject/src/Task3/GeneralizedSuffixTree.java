@@ -254,7 +254,6 @@ public class GeneralizedSuffixTree {
 
                     return new Pair<Boolean, Node>(true, s);
                 } else if (e.getLabel().startsWith(remainder)) {
-
                     // need to split as above
                     Node newNode = new Node();
                     newNode.addRef(value);
@@ -274,7 +273,6 @@ public class GeneralizedSuffixTree {
                 }
             }
         }
-
     }
 
     /**
@@ -284,8 +282,8 @@ public class GeneralizedSuffixTree {
      * appended to the concatenation of labels from s to n to get inpustr.
      */
     private Pair<Node, String> canonize(final Node s, final String inputstr) {
-
         if ("".equals(inputstr)) {
+            s.setEndCount(s.getEndCount()+1);
             return new Pair<Node, String>(s, inputstr);
         } else {
             Node currentNode = s;
