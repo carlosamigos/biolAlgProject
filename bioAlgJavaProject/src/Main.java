@@ -29,11 +29,14 @@ public class Main {
     public static void task3(String[] args){
         String adapterSequence;
 
-        DNAFile file = new DNAFile("s_1-1_1M.txt");
+        DNAFile file = new DNAFile("testFile.txt");
         ArrayList<String> dnaStrings = file.getDnaStrings();
 
         FindAdapterSequence fas = new FindAdapterSequence(dnaStrings);
-        fas.run();
+        Integer rounds = 50000;
+        Integer printEvery = 10000;
+        Integer threshold = 1;
+        fas.run(rounds, printEvery, threshold);
     }
 
     public static void main(String[] args){
