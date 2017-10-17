@@ -121,11 +121,16 @@ public class GeneralizedSuffixTree {
     }
 
 
+
+
     private void searchForInternalNode(Node node, HashMap<Node, Integer> results, Integer threshold){
         Integer leafsUnderCounter = 0;
 
         for (Edge edge : node.getEdges().values()) {
-            System.out.println(edge.getLabel() + edge.getDest().getData() + node.getEndCount());
+            System.out.println(edge.getDest() + " "+ edge.getDest().getSuffix());
+            System.out.println(edge.getLabel() + edge.getDest().getData() + edge.getDest().getDistinctStringsEnding().size() + " " + edge.getDest().getSuffix().getDistinctStringsEnding().size());
+
+            System.out.println();
             if (edge.getDest().getEdges().size() == 0 ) {
                 leafsUnderCounter++;
             }
@@ -220,6 +225,7 @@ public class GeneralizedSuffixTree {
             String label = g.getLabel();
             // must see whether "str" is substring of the label of an edge
             if (label.length() > str.length() && label.charAt(str.length()) == t) {
+                g.getDest().addDistinctStringsEnding(value);
                 return new Pair<Boolean, Node>(true, s);
             } else {
                 // need to split the edge
@@ -249,9 +255,10 @@ public class GeneralizedSuffixTree {
                 if (remainder.equals(e.getLabel())) {
                     // update payload of destination node
                     e.getDest().addRef(value);
+                    e.getDest().addDistinctStringsEnding(value);
                     return new Pair<Boolean, Node>(true, s);
                 } else if (remainder.startsWith(e.getLabel())) {
-
+                    e.getDest().addDistinctStringsEnding(value);
                     return new Pair<Boolean, Node>(true, s);
                 } else if (e.getLabel().startsWith(remainder)) {
 
@@ -266,16 +273,19 @@ public class GeneralizedSuffixTree {
                     newNode.addEdge(e.getLabel().charAt(0), e);
 
                     s.addEdge(t, newEdge);
-
                     return new Pair<Boolean, Node>(false, s);
                 } else {
                     // they are different words. No prefix. but they may still share some common substr
+                    e.getDest().addDistinctStringsEnding(value);
                     return new Pair<Boolean, Node>(true, s);
                 }
             }
         }
 
     }
+
+
+
 
     /**
      * Return a (Node, String) (n, remainder) pair such that n is a farthest descendant of

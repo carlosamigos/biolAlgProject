@@ -1,9 +1,6 @@
 package Task3;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 class Node {
 
@@ -55,7 +52,7 @@ class Node {
     private int resultCount = -1;
 
 
-    private int endCount = 0;
+    private HashSet<Integer> distinctStringsEnding = new HashSet<>();
 
     /**
      * Creates a new Node
@@ -231,11 +228,22 @@ class Node {
     }
 
 
-    public int getEndCount() {
-        return endCount;
+    public HashSet<Integer> getDistinctStringsEnding() {
+        return distinctStringsEnding;
     }
 
-    public void setEndCount(int endCount) {
-        this.endCount = endCount;
+    public void addDistinctStringsEnding(Integer index,  HashSet<Integer> indexes) {
+        this.distinctStringsEnding.add(index);
+        this.distinctStringsEnding.addAll(indexes);
     }
+
+    public void addDistinctStringsEnding(HashSet<Integer> indexes) {
+        this.distinctStringsEnding.addAll(indexes);
+    }
+
+    public void addDistinctStringsEnding(Integer index) {
+        this.distinctStringsEnding.add(index);
+    }
+
+
 }
