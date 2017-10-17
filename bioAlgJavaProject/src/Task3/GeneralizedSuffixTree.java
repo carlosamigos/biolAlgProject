@@ -108,38 +108,44 @@ public class GeneralizedSuffixTree {
     /**
      * Returns a list with at least k children that
      */
-    public ArrayList<Node> searchForNodes(Integer threshold) {
+    public ArrayList<Node> searchForNodes(Integer sizeThreshold, Integer numberThreshold) {
         Node currentNode = root;
         Edge currentEdge;
 
-        HashMap<Node, Integer> results = new HashMap<>();
-        searchForInternalNode(root, results, threshold);
+        HashMap<Node, Integer> resultsNumber = new HashMap<>();
+        HashMap<Node, String> resultsString = new HashMap<>();
+        searchForInternalNode(root, resultsNumber,resultsString, sizeThreshold, numberThreshold, "");
 
-        System.out.println(results.size());
-        System.out.println(results);
+        ArrayList<Node> nodesInResults = new ArrayList<>(resultsNumber.keySet());
+        while(nodesInResults.size()>0){
+            Node node = nodesInResults.remove(0);
+            System.out.println( resultsString.get(node) + " with "+ resultsNumber.get(node) + " occurences.");
+
+        }
+
         return null;
     }
 
 
 
 
-    private void searchForInternalNode(Node node, HashMap<Node, Integer> results, Integer threshold){
-        Integer leafsUnderCounter = 0;
 
+
+
+    private void searchForInternalNode(Node node, HashMap<Node, Integer> resultsNumber, HashMap<Node, String> resultsString, Integer sizeThreshold, Integer numberThreshold, String string){
+        Integer number;
+        String string2;
         for (Edge edge : node.getEdges().values()) {
-            System.out.println(edge.getDest() + " "+ edge.getDest().getSuffix());
-            System.out.println(edge.getLabel() + edge.getDest().getData() + edge.getDest().getDistinctStringsEnding().size() + " " + edge.getDest().getSuffix().getDistinctStringsEnding().size());
-
-            System.out.println();
-            if (edge.getDest().getEdges().size() == 0 ) {
-                leafsUnderCounter++;
+            Node nextNode = edge.getDest();
+            number = nextNode.getDistinctStringsEnding().size();
+            string2 = string + edge.getLabel();
+            if(nextNode.getDistinctStringsEnding().size() >= numberThreshold  && string2.length() >= sizeThreshold ) {
+                resultsNumber.put(nextNode,number);
+                resultsString.put(nextNode,string2);
             }
             else {
-                searchForInternalNode(edge.getDest(), results, threshold);
+                searchForInternalNode(nextNode, resultsNumber, resultsString, sizeThreshold, numberThreshold, string2);
             }
-        }
-        if (leafsUnderCounter >= threshold) {
-            results.put(node, leafsUnderCounter);
         }
     }
 
@@ -225,7 +231,9 @@ public class GeneralizedSuffixTree {
             String label = g.getLabel();
             // must see whether "str" is substring of the label of an edge
             if (label.length() > str.length() && label.charAt(str.length()) == t) {
+
                 g.getDest().addDistinctStringsEnding(value);
+
                 return new Pair<Boolean, Node>(true, s);
             } else {
                 // need to split the edge
@@ -277,6 +285,7 @@ public class GeneralizedSuffixTree {
                 } else {
                     // they are different words. No prefix. but they may still share some common substr
                     e.getDest().addDistinctStringsEnding(value);
+
                     return new Pair<Boolean, Node>(true, s);
                 }
             }
