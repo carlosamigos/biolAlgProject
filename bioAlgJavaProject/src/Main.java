@@ -33,14 +33,14 @@ public class Main {
         String adapterSequence;
 
         //DNAFile file = new DNAFile("testFile.txt");
-        DNAFile file = new DNAFile("s_3_sequence_1M.txt");
+        DNAFile file = new DNAFile("MultiplexedSamples.txt");
         ArrayList<String> dnaStrings = file.getDnaStrings();
 
         FindAdapterSequence fas = new FindAdapterSequence(dnaStrings);
-        Integer rounds = 10000;
+        Integer rounds = 70000;
         Integer printEvery = 10000;
-        Integer stringSizeThreshold = 49;
-        Integer numberThreshold = 1000;
+        Integer stringSizeThreshold = 25;
+        Integer numberThreshold = 22000;
         fas.run(rounds, printEvery, stringSizeThreshold, numberThreshold);
     }
 
