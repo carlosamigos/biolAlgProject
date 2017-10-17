@@ -2,7 +2,11 @@ package Task3;
 
 public class FindAdapterSequence {
 
-    public GeneralizedSuffixTree createTree(String dna){
-        GeneralizedSuffixTree gst = new GeneralizedSuffixTree(dna);
+    private String dna;
+
+    public void createTree(String dna){
+        this.dna = dna;
+        GeneralizedSuffixTree gst = new GeneralizedSuffixTree();
+
     }
 }
