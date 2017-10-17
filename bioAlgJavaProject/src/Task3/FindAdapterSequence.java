@@ -13,7 +13,7 @@ public class FindAdapterSequence {
         this.gst = new GeneralizedSuffixTree();
     }
 
-    public void run(Integer rounds, Integer printEvery, Integer threshold){
+    public void run(Integer rounds, Integer printEvery, Integer sizeThreshold, Integer numberThreshold){
         long start = System.currentTimeMillis();
         int counter = 0;
         for (String dna : dnaStrings) {
@@ -28,7 +28,7 @@ public class FindAdapterSequence {
             }
             counter++;
         }
-        gst.searchForNodes(threshold);
+        gst.searchForNodes(sizeThreshold, numberThreshold);
     }
 
     public String getAdapterSequence(){
