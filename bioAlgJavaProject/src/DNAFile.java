@@ -1,5 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class DNAFile {
@@ -13,6 +17,7 @@ public class DNAFile {
     }
 
     private void readFile(String filename){
+        /*
         try{
             BufferedReader br = new BufferedReader(new FileReader(filename));
             StringBuilder sb = new StringBuilder();
@@ -23,6 +28,13 @@ public class DNAFile {
             }
         }
         catch (Exception e){
+            e.printStackTrace();
+        }*/
+
+        try {
+            Files.lines(Paths.get(filename), StandardCharsets.UTF_8).forEach(s -> dnaStrings.add(s));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
