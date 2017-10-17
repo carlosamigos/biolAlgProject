@@ -4,3 +4,5 @@ bioAlgJavaProject/\.DS_Store
 bioAlgJavaProject/MultiplexedSamples\.txt
 
 MultiplexedSamples.txt
+
+*.xml
