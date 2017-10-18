@@ -6,6 +6,7 @@ public class FindAdapterSequence {
 
     private ArrayList<String> dnaStrings;
     public GeneralizedSuffixTree gst;
+    private String adapterSequence;
 
     public FindAdapterSequence(ArrayList<String> dnaStrings){
         this.dnaStrings = dnaStrings;
@@ -30,4 +31,11 @@ public class FindAdapterSequence {
         gst.searchForNodes(sizeThreshold, numberThreshold);
     }
 
+    public String getAdapterSequence(){
+        return adapterSequence;
+    }
+
+    public void setAdapterSequence(String adapterSequence){
+        this.adapterSequence = adapterSequence;
+    }
 }
